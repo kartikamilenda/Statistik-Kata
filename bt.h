@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include "boolean.h"
+#include "Statistic.h"
 
 #define Nil NULL
 #define MAX   1000
@@ -12,10 +13,7 @@
 #define Right(P) (P)->right
 #define Count(P) (P)->count
 
-typedef struct infotype{
-	char word[MAX];
-	int sum;
-}infotype;
+typedef statistic infotype;
 typedef struct tElmtNode *address;
 typedef struct tElmtNode
 {

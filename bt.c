@@ -17,7 +17,7 @@ address Alokasi(infotype X)
 	P = (address)malloc(sizeof(ElmtNode));
 	if (P != Nil)
 	{
-		strcpy(Info(P).word, X);
+		Info(P) = X;
 		Left(P) = Nil;
 		Right(P) = Nil;
 		Count(P) = 0;
@@ -56,7 +56,7 @@ BinTree Tree(infotype X, BinTree L, BinTree R)
 	P = Alokasi(X);
 	if (P != Nil)
 	{
-		strcpy(Info(P), X);
+		Info(P) = X;
 		Left(P) = L;
 		Right(P) = R;
 		Parent(P) = P;
@@ -71,7 +71,7 @@ void MakeTree(infotype X, BinTree L, BinTree R, BinTree *P)
 	*P = Alokasi(X);
 	if (*P != Nil)
 	{
-		strcpy(Info(*P), X);
+		Info(*P) = X;
 		Left(*P) = L;
 		Right(*P) = R;
 		Parent(*P) = *P;
@@ -156,9 +156,10 @@ void PrintTree(BinTree P)
 	};
 }
 
-address Search2(BinTree T, infotype X)
+/*address Search2(BinTree T, infotype X)
 {
 	address L, R;
+	char words[MAX];
 
 	if (T == Nil)
 	{
@@ -166,7 +167,7 @@ address Search2(BinTree T, infotype X)
 	}
 	else
 	{
-		if (strcmp(Info(T), X) != 0)
+		if (strcmp(T->info.word, X) != 0)
 		{
 			L = Search2(Left(T), X);
 			if (L == Nil)
@@ -179,7 +180,7 @@ address Search2(BinTree T, infotype X)
 			return T;
 		};
 	};
-};
+};*/
 
 /* *********** MEMBENTUK BALANCE TREE ************* */
 
@@ -235,7 +236,7 @@ void InsSearchTree(BinTree *P, infotype X)
 	}
 	else
 	{
-		if (strcmp(X, Info(*P)) == 0) // X == Info(*P)
+		if (strcmp(X, Info(*P).word) == 0) // X == Info(*P)
 		{
 			Count(*P)++;
 		}
