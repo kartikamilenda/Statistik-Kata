@@ -1,4 +1,5 @@
 #include "bt.h"
+#include "Statistic.h"
 
 #include <stdio.h>
 #define MAX   1000
@@ -50,14 +51,18 @@ int main(){
     fclose(file);
     
     BinTree BT = Nil;
-    infotype X[MAX];
+    infotype st;
+    
     
     
    for (i=0; i<index; i++){
-       strcpy(X, words[i]);
-       InsSearchTree(&BT, X);
+       strcpy(st.word, words[i]);
+       st.sum = count[i];
+       st = CreateStatistic(st.word,st.sum);
+       //PrintStatistic(st);
+       InsSearchTree(&BT, st);
        
-    }   
+    }  
     printf("Inorder dari Tree : \n");
     Inorder(BT);
 

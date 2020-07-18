@@ -123,7 +123,7 @@ void Inorder(BinTree P)
 	if (P != Nil)
 	{
 		Inorder(Left(P));
-		printf("%s\n", Info(P));
+		PrintStatistic(Info(P));
 		Inorder(Right(P));
 	}
 }
@@ -145,21 +145,20 @@ void PrintTree(BinTree P)
 	/* F.S  : semua simpul P sudah ditulis / preorder	*/
 	if (IsEmpty(P))
 	{
-		printf("()");
+		printf(" ");
 	}
 	else
 	{
-		printf("(%s", Info(P));
+		PrintStatistic(Info(P));
 		PrintTree(Left(P));
 		PrintTree(Right(P));
-		printf(")");
 	};
 }
 
-/*address Search2(BinTree T, infotype X)
+address Search2(BinTree T, infotype X)
 {
 	address L, R;
-	char words[MAX];
+	char temp[MAX],temp2[MAX];
 
 	if (T == Nil)
 	{
@@ -167,7 +166,9 @@ void PrintTree(BinTree P)
 	}
 	else
 	{
-		if (strcmp(T->info.word, X) != 0)
+		GetWord(Info(T),temp);
+		GetWord(X,temp2);
+		if (strcmp(temp, temp2) != 0)
 		{
 			L = Search2(Left(T), X);
 			if (L == Nil)
@@ -178,9 +179,9 @@ void PrintTree(BinTree P)
 		else
 		{
 			return T;
-		};
-	};
-};*/
+		}
+	}
+}
 
 /* *********** MEMBENTUK BALANCE TREE ************* */
 
@@ -222,27 +223,26 @@ BinTree BuildBalanceTree(int n)
 }
 
 void InsSearchTree(BinTree *P, infotype X)
-{ /* Menambahkan sebuah node X, ke  pohon biner pencarian P */
-	/* infotype terdiri dsari key dan count. Key menunjukkan  */
-	/* nilai unik, dan Count berapa kali muncul  ; */
-	/* Basis :  pohon kosong */
-	/* Rekurens  : jika pohon tidak kosong, insert  ke anak   */
-	/*         	   kiri jika nilai  < info(P); insert ke anak */
-	/*             kanan jika nilai > info(Akar); 	      */
-	/* Alokasi selalu berhasil 				      */
+{ 
+	char temp[MAX],temp2[MAX];
+	
+	
+	
 	if (IsEmpty(*P))
 	{
 		MakeTree(X, Nil, Nil, &(*P));
 	}
 	else
-	{
-		if (strcmp(X, Info(*P).word) == 0) // X == Info(*P)
+	{ 
+		GetWord(Info(*P),temp);
+		GetWord(X,temp2);
+		if  (strcmp(temp,temp2) == 0)// X == Info(*P)
 		{
 			Count(*P)++;
 		}
 		else
 		{
-			if (strcmp(X, Info(*P)) < 0) // X < Info(*P)
+			if (strcmp(temp, temp2) < 0) // X < Info(*P)
 			{
 				InsSearchTree(&(Left(*P)), X);
 			}
