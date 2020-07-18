@@ -1,3 +1,7 @@
+/* File    : bintree.c 					*/
+/* Desk    : Body primitif Binary Tree secara rekursif 	*/
+/* Oleh    : ANI RAHMANI / 23501007			*/
+/* Tgl	   : 21 / 11 / 2001	  			*/
 #include "bt.h"
 #include <string.h>
 #include <stdio.h>
@@ -110,7 +114,7 @@ void Preorder(BinTree P)
 	/*            Proses secara  Preorder(Right(P)); 		       */
 	if (P != Nil)
 	{
-		printf("%s", Info(P));
+		PrintStatistic(Info(P));
 		Preorder(Left(P));
 		Preorder(Right(P));
 	}
@@ -136,7 +140,7 @@ void Postorder(BinTree P)
 	{
 		Postorder(Left(P));
 		Postorder(Right(P));
-		printf("%s", Info(P));
+		PrintStatistic(Info(P));
 	}
 }
 
@@ -225,8 +229,6 @@ BinTree BuildBalanceTree(int n)
 void InsSearchTree(BinTree *P, infotype X)
 { 
 	char temp[MAX],temp2[MAX];
-	
-	
 	
 	if (IsEmpty(*P))
 	{

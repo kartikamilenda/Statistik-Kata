@@ -58,7 +58,7 @@ int main(){
    for (i=0; i<index; i++){
        strcpy(st.word, words[i]);
        st.sum = count[i];
-       st = CreateStatistic(st.word,st.sum);
+       //st = CreateStatistic(st.word,st.sum);
        //PrintStatistic(st);
        InsSearchTree(&BT, st);
        
