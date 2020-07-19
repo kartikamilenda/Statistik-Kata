@@ -82,6 +82,24 @@ void MakeTree(infotype X, BinTree L, BinTree R, BinTree *P)
 	}
 }
 
+// Description              : Prosedur yang digunakan untuk mengubah tree menjadi bst
+// Initial State            : Tree yang hanya mempunyai root
+// Final State              : Tree yang sudah menjadi bst
+// Author                   : Kartika Milenda, Farhan Nurzaman
+// Reference                : https://www.geeksforgeeks.org/construct-a-binary-search-tree-from-given-postorder/
+BinTree AddTree(BinTree P, infotype X){
+	if(P == NULL){
+		return Tree(X,Nil,Nil);		
+	} 
+
+    if (strcmp(X.word,P->info.word)<0){
+        P->left  = AddTree(P->left, X);    	
+	} else {
+		P->right = AddTree(P->right, X);
+	} 
+    return P;
+}
+
 /* ********* PREDIKAT PENTING  **************  */
 boolean IsUnerLeft(BinTree P)
 { /* Mengirimkan True jika pohon biner tidak kosong; P adalah pohon  */
